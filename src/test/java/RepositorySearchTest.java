@@ -3,9 +3,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
-public class RepositorySearch {
+public class RepositorySearchTest {
     @Test
     void HaveTextSelenideAtTheTop() {
         // First step to any test - Manual Test that you want automation
@@ -21,25 +20,23 @@ public class RepositorySearch {
         $$("[data-testid='results-list'] div").first().$("a").click();
         $("#wiki-tab").click();
         $(".wiki-more-pages-link").$("button").click();
-//        $( ".js-wiki-sidebar-toggle-display")
         $$("[data-filterable-for='wiki-pages-filter'] li").findBy(text("SoftAssertions")).$("a").click();
 
         $$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).shouldHave(size(1));
         $$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).
                 first().sibling(0).$("pre").shouldHave(text(
-                        """
-                                   @ExtendWith({SoftAssertsExtension.class})
-                                                                     class Tests {
-                                                                       @Test
-                                                                       void test() {
-                                                                         Configuration.assertionMode = SOFT;
-                                                                         open("page.html");
-     
-                                                                         $("#first").should(visible).click();
-                                                                         $("#second").should(visible).click();
-                                       }                       
-                                     }
-                        """
+                        """ 
+                      @ExtendWith({SoftAssertsExtension.class})                                               
+                      class Tests {                                               
+                      @Test                                                 
+                      void test() {                                                 
+                      Configuration.assertionMode = SOFT;                                                   
+                       open("page.html");                                                  
+                       $("#first").should(visible).click();                                                  
+                       $("#second").should(visible).click();                                                 
+                       }                       
+                       }
+    """
                 ));
     }
 }
