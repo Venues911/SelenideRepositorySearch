@@ -14,17 +14,17 @@ public class RepositorySearchTest {
         // - Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
         // - Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
 
-        open("https://github.com/");
-        $("[placeholder='Search or jump to...']").click(); // .class, #id, []
-        $("#query-builder-test").setValue("Selenide").pressEnter();
-        $$("[data-testid='results-list'] div").first().$("a").click();
-        $("#wiki-tab").click();
-        $(".wiki-more-pages-link").$("button").click();
-        $$("[data-filterable-for='wiki-pages-filter'] li").findBy(text("SoftAssertions")).$("a").click();
+open("https://github.com/");
+$("[placeholder='Search or jump to...']").click(); // .class, #id, []
+$("#query-builder-test").setValue("Selenide").pressEnter();
+$$("[data-testid='results-list'] div").first().$("a").click();
+$("#wiki-tab").click();
+$(".wiki-more-pages-link").$("button").click();
+$$("[data-filterable-for='wiki-pages-filter'] li").findBy(text("SoftAssertions")).$("a").click();
 
-        $$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).shouldHave(size(1));
-        $$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).
-                first().sibling(0).$("pre").shouldHave(text(
+$$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).shouldHave(size(1));
+$$(".markdown-body h4").filterBy(text("Using JUnit5 extend test class:")).
+first().sibling(0).$("pre").shouldHave(text(
     """ 
         @ExtendWith({SoftAssertsExtension.class})                                            
         class Tests {                                               
