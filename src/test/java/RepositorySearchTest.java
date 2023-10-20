@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RepositorySearchTest {
     @Test
-    void HaveTextSelenideAtTheTop() {
+    void haveTextSelenideAtTheTop() {
         // First step to any test - Manual Test that you want automation
         // Write your step - planning what you want to do
         //- Откройте страницу Selenide в Github
