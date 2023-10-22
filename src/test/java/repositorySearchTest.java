@@ -4,7 +4,7 @@ import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class repositorySearchTest {
+public class RepositorySearchTest {
     @Test
     void haveTextSelenideAtTheTop() {
         // First step to any test - Manual Test that you want automation
